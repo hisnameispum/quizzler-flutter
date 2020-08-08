@@ -45,8 +45,7 @@ class QuizBrain{
   }
 
   bool isFinished(){
-    if(_questionNumber == _questionNumber-1){
-      print("Finished");
+    if(_questionNumber >= _questionNumber-1){
       return true;
     }
     else{

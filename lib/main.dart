@@ -34,7 +34,7 @@ class _QuizPageState extends State<QuizPage> {
 
   void checkAnswer(bool pickedAnswer){
     setState(() {
-    if (quizBrain.isFinished()){
+    if (quizBrain.isFinished() == true){
       Alert(
         context: context,
         title: 'Finished!',
@@ -53,7 +53,7 @@ class _QuizPageState extends State<QuizPage> {
 
       quizBrain.nextQuestion();
     }  });
-    
+
   }
 
 
