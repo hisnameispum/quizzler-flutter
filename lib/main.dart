@@ -34,7 +34,7 @@ class _QuizPageState extends State<QuizPage> {
 
   void checkAnswer(bool pickedAnswer){
     setState(() {
-    if (quizBrain.isFinished() == true){
+    if (quizBrain.isFinished()){
       Alert(
         context: context,
         title: 'Finished!',
