@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:quizzler/quiz_brain.dart';
+
 
 void main() => runApp(Quizzler());
 
+QuizBrain quizBrain = QuizBrain();
 class Quizzler extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -27,13 +30,9 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
 
   List<Icon> scoreKeeper = [];
-  List<String> questions = [
-    'You can lead a cow down stairs but not up stairs.',
-    'Approximately one quarter of human bones are in the feet.',
-    'A slug\'s blood is green.'
-  ];
+
   int questionNumber = 0;
-  List<bool> answers = [ false, true, true ];
+
 
 
   @override
@@ -48,7 +47,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questions[questionNumber],
+                quizBrain.questionBank[questionNumber].questionText,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -72,7 +71,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                if (answers[questionNumber] == true){
+                if (quizBrain.questionBank[questionNumber].questionAnswer == true){
                   setState(() {
                     scoreKeeper.add(Icon(Icons.check,color: Colors.green,));
                     questionNumber++;
@@ -105,7 +104,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked false.
-                if (answers[questionNumber] == false){
+                if (quizBrain.questionBank[questionNumber].questionAnswer == false){
                   setState(() {
                     scoreKeeper.add(Icon(Icons.check,color: Colors.green,));
                     questionNumber++;
